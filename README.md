@@ -1,12 +1,12 @@
 # Object Detection System
 
-Sistem deteksi objek real-time menggunakan Google Cloud Vision API dengan React frontend dan Node.js backend.
+Sistem deteksi objek real-time by Yssufszz hehe pake Google Cloud Vision API pake React di frontend dan Node.js di backend.
 
-## 🚀 Instalasi dan Setup
+## Instalasi dan Setup
 
 ### 1. Clone/Download Project
 ```bash
-# Buat folder project sesuai struktur yang sudah dijelaskan
+# Bikin folder project dulu
 mkdir object-detection-system
 cd object-detection-system
 ```
@@ -15,41 +15,41 @@ cd object-detection-system
 
 **a. Enable APIs:**
 - Masuk ke [GCP Console](https://console.cloud.google.com)
-- Pilih project `yssfszz`
+- Pilih project yang klen bikin
 - Enable APIs berikut:
-  - [Cloud Vision API](https://console.cloud.google.com/apis/library/vision.googleapis.com?project=yssfszz)
-  - [Firestore API](https://console.cloud.google.com/apis/library/firestore.googleapis.com?project=yssfszz)
-  - [Cloud Storage API](https://console.cloud.google.com/apis/library/storage.googleapis.com?project=yssfszz) (opsional)
+  - Cloud Vision API
+  - Firestore API
+  - Cloud Storage API (opsional)
 
 **b. Buat Service Account:**
-1. Masuk ke [Service Accounts](https://console.cloud.google.com/iam-admin/serviceaccounts?project=yssfszz)
+1. Masuk ke Service Accounts di GCP Console
 2. Klik "Create Service Account"
-3. Nama: `vision-detection-service`
-4. Berikan roles:
+3. Kasih nama yang gampang ae, misal: `vision-detection-service`
+4. Kasih roles:
    - Cloud Vision API User
    - Cloud Datastore User
-   - Storage Admin (jika menggunakan Cloud Storage)
+   - Storage Admin (kalau mau pakai Cloud Storage)
 5. Klik "Create and Continue"
-6. Klik "Create Key" → JSON
-7. Download file JSON
-8. Rename menjadi `serviceAccountKey.json`
+6. Klik "Create Key" pilih JSON
+7. Download file JSON nya
+8. Rename jadi `serviceAccountKey.json`
 9. Simpan di folder `backend/`
 
 **c. Setup Firestore:**
-1. Masuk ke [Firebase Console](https://console.firebase.google.com)
-2. Klik "Add project" → "Import Google Cloud project"
-3. Pilih project `yssfszz`
+1. Masuk ke Firebase Console
+2. Klik "Add project" atau import Google Cloud project yang udah ada
+3. Pilih project yang klen bikin/import
 4. Enable Firestore Database
-5. Pilih mode "Production" atau "Test mode"
-6. Pilih region: `asia-southeast2 (Jakarta)`
+5. Pilih mode "Production" atau "Test mode" terserah yang klen bikin
+6. Pilih region yang paling deket sama lokasi yang klen bikin
 
 ### 3. Instalasi Dependencies
 
 ```bash
-# Install dependencies root
+# Install semua dependencies sekaligus
 npm run install-all
 
-# Atau manual:
+# Atau kalau mo atu-atu:
 npm install
 cd backend && npm install
 cd ../frontend && npm install
@@ -62,10 +62,10 @@ cd ..
 ```bash
 # File: backend/.env
 PORT=5000
-GOOGLE_CLOUD_PROJECT_ID=yssfszz
-GOOGLE_APPLICATION_CREDENTIALS=./serviceAccountKey.json
+GOOGLE_CLOUD_PROJECT_ID=project-id-klen
+GOOGLE_APPLICATION_CREDENTIALS=./serviceAccountKey-yang-klen-download-tadi.json
 FIRESTORE_COLLECTION=detections
-CLOUD_STORAGE_BUCKET=yssfszz-images
+CLOUD_STORAGE_BUCKET=nama-bucket-klen
 NODE_ENV=development
 ```
 
@@ -79,18 +79,17 @@ REACT_APP_CAPTURE_INTERVAL=5000
 ### 5. Buat Cloud Storage Bucket (Opsional)
 
 ```bash
-# Menggunakan gcloud CLI (jika terinstall)
-gcloud storage buckets create gs://yssfszz-images --project=yssfszz --location=asia-southeast2
+# Pakai gcloud CLI kalo udah install
+gcloud storage buckets create gs://nama-bucket-klen --project=project-id-klen --location=asia-southeast2
 
-# Atau buat manual di Console:
-# https://console.cloud.google.com/storage/browser?project=yssfszz
+# Atau bikin manual lewat Console GCP
 ```
 
-## 🏃‍♂️ Menjalankan Aplikasi
+## Cara Jalankan Aplikasi
 
-### Development Mode (Recommended)
+### Development Mode (Biar Sat-Set)
 ```bash
-# Jalankan frontend dan backend bersamaan
+# Jalanin frontend sama backend bareng inimah
 npm run dev
 ```
 
@@ -105,60 +104,60 @@ npm run client
 
 ### Production Mode
 ```bash
-# Build frontend
+# Build frontend dulu
 npm run build
 
-# Start backend only
+# Terus jalanin backend aja
 npm start
 ```
 
-## 📱 Akses Aplikasi
+## Akses Aplikasi
 
 - **Frontend:** http://localhost:3000
 - **Backend API:** http://localhost:5000
 - **Health Check:** http://localhost:5000/api/vision/health
 
-## 🔧 API Endpoints
+## API Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/` | API info |
-| GET | `/api/vision/health` | Health check |
+| Method | Endpoint | Deskripsi |
+|--------|----------|-----------|
+| GET | `/` | Info API |
+| GET | `/api/vision/health` | Cek status sistem |
 | POST | `/api/vision/detect` | Upload dan deteksi objek |
 | GET | `/api/vision/detections` | Ambil history deteksi |
-| GET | `/api/vision/detections/:id` | Ambil deteksi by ID |
+| GET | `/api/vision/detections/:id` | Ambil deteksi berdasarkan ID |
 
-## 🎯 Cara Penggunaan
+## Cara Pake
 
 1. **Buka aplikasi** di http://localhost:3000
-2. **Allow camera access** saat diminta browser
-3. **Klik "Start Auto Capture"** untuk mulai deteksi otomatis setiap 5 detik
-4. **Atau klik "Capture Now"** untuk capture manual
-5. **Lihat hasil deteksi** di panel sebelah kanan
-6. **Monitor statistics** di dashboard atas
+2. **Allow camera access** pas browser minta permission
+3. **Klik "Mulai Auto Jepret"** untuk mulai deteksi otomatis tiap 5 detik
+4. **Atau klik "Foto"** kalau mau capture manual
+5. **Liat hasil deteksi** di panel sebelah kanan
+6. **Monitor statistik** di dashboard atas
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
-### Error: Camera tidak bisa diakses
-- Pastikan browser memberikan permission camera
+### Error: Camera ga bisa diakses
+- Pastiin browser udah kasih permission camera
 - Coba refresh halaman
-- Pastikan tidak ada aplikasi lain yang menggunakan camera
+- Pastiin ga ada aplikasi lain yang pakai camera
 
 ### Error: Vision API failed
-- Cek apakah Vision API sudah di-enable di GCP
-- Pastikan Service Account key valid
+- Cek Vision API udah di-enable belum di GCP
+- Pastiin Service Account key valid
 - Cek quota API di GCP Console
 
 ### Error: Firestore connection failed
-- Pastikan Firestore sudah di-setup di Firebase Console
+- Pastiin Firestore udah di-setup di Firebase Console
 - Cek Service Account permission
-- Pastikan collection name benar di .env
+- Pastiin nama collection bener di .env
 
 ### Error: CORS issues
-- Pastikan backend running di port 5000
+- Pastiin backend jalan di port 5000
 - Cek frontend .env REACT_APP_API_URL
 
-## 📁 Struktur File Lengkap
+## Struktur File Lengkap
 
 ```
 object-detection-system/
@@ -172,7 +171,7 @@ object-detection-system/
 │   ├── uploads/ (auto-generated)
 │   ├── package.json
 │   ├── .env
-│   └── serviceAccountKey.json ⚠️ (harus dibuat)
+│   └── serviceAccountKey.json (harus dibuat dlu di gcp brok)
 ├── frontend/
 │   ├── public/index.html
 │   ├── src/
@@ -190,41 +189,27 @@ object-detection-system/
 └── README.md
 ```
 
-## 🎛️ Konfigurasi
+## Fitur yang udah ada
 
-### Mengubah Interval Capture
-Edit `frontend/.env`:
-```bash
-REACT_APP_CAPTURE_INTERVAL=3000  # 3 detik
-```
+- Real-time webcam capture
+- Deteksi objek otomatis setiap beberapa detik
+- Manual capture
+- Simpan hasil ke Firestore (ini masih eror sih hehe)
+- Upload gambar ke Cloud Storage (opsional) (ini juga eror)
+- Dashboard nya pake statistik 
+- History deteksi
+- Responsive design yang mobile-friendly (tapi di mobile masih belom oke tampilannya hehe)
+- Error handling yang proper
 
-### Mengubah Collection Firestore
-Edit `backend/.env`:
-```bash
-FIRESTORE_COLLECTION=my_detections
-```
+## Kalo mau di kembangin
 
-## 📊 Fitur Sistem
-
-- ✅ Real-time webcam capture
-- ✅ Otomatis deteksi objek setiap X detik
-- ✅ Manual capture
-- ✅ Simpan hasil ke Firestore
-- ✅ Upload gambar ke Cloud Storage (opsional)
-- ✅ Dashboard dengan statistik
-- ✅ History deteksi
-- ✅ Responsive design
-- ✅ Error handling
-
-## 🚀 Next Steps
-
-Setelah sistem berjalan, Anda bisa:
-1. Tambah authentication
-2. Improve UI/UX design
+Bisa lanjut ke:
+1. Tambahin authentication biar secure
+2. Improve UI/UX design biar makin gg cok gua malas
 3. Add real-time notifications
 4. Deploy ke production
-5. Add more Vision API features (face detection, text detection, dll)
+5. Tambahin fitur Vision API lainnya kayak face detection, text detection, dll
 
 ---
 
-**Jika ada error atau pertanyaan, cek log di console browser dan terminal!**
+**Kalau ada error atau bingung, cek aja log di console browser sama terminal aje ya haha -Yssufsz**
