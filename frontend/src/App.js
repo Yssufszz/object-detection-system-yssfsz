@@ -96,7 +96,7 @@ function App() {
             <div className="text-center text-muted">
               <hr />
               <p className="mb-0">
-                Powered by Google Cloud Vision API • Di buat pake React, Node.js & Express
+                Pake google Google Cloud Vision API • Di buat pake React ama Node.js
               </p>
               <small>
                 Project bareng ai hasil Yssufsz | Status Sistem: 
