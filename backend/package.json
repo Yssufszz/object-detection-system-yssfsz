@@ -1,0 +1,32 @@
+{
+  "name": "object-detection-backend",
+  "version": "1.0.0",
+  "description": "Backend API buat Deteksi objek pake Google Cloud Vision API",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vision-api",
+    "object-detection",
+    "google-cloud",
+    "firestore",
+    "express"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/firestore": "^7.11.1",
+    "@google-cloud/storage": "^7.16.0",
+    "@google-cloud/vision": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.1",
+    "multer": "^2.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
